@@ -8,8 +8,32 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'myentity',
+    loadChildren: () => import('./myentity/myentity.module').then( m => m.MyentityPageModule)
+  },
+  {
+    path: 'north-ws',
+    loadChildren: () => import('./north-ws/north-ws.module').then( m => m.NorthWSPageModule)
+  },
+  {
+    path: 'south-ws',
+    loadChildren: () => import('./south-ws/south-ws.module').then( m => m.SouthWSPageModule)
+  },
+  {
+    path: 'east-ws',
+    loadChildren: () => import('./east-ws/east-ws.module').then( m => m.EastWSPageModule)
+  },
+  {
+    path: 'west-ws',
+    loadChildren: () => import('./west-ws/west-ws.module').then( m => m.WestWSPageModule)
   },
 ];
 

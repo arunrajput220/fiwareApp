@@ -1,20 +1,194 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  
+  <ion-toolbar class="myback">
+    <ion-title >Entity Manager</ion-title>
+    <ion-buttons slot="end">
+       <ion-button class="iconsize" routerLink="/search">
+          <ion-icon slot="end"name="search-sharp"></ion-icon>
+        </ion-button>
+        <ion-button class="iconsize" (click)="alertmsg()">
+          <ion-icon slot="icon-only" ios="notifications-outline" md="notifications-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="userDetails()">
+          <ion-icon class="iconsize" slot="icon-only" ios="person-circle-outline" md="person-circle-outline"></ion-icon>
+        </ion-button>
+        <ion-button class="iconsize" (click)="logout()">
+          <ion-icon slot="end" name="log-out-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
   </ion-toolbar>
+  
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="background">
+<br>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<div class="mid">
+
+<ion-grid>
+  <ion-row>
+ 
+    
+    <ion-col size="2" (click)="northws()">
+      <ion-card class="ion-card-design" color="">
+        <ion-card-header style="text-align: center;">
+          <ion-card-subtitle class="cardalign" >
+           Fiware PoC Entity
+            <ion-icon slot="icon-only" ios="alert-circle-outline" md="alert-circle-outline">
+            </ion-icon>  
+          </ion-card-subtitle>
+          <div class="div1">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="1">
+                  
+                  </ion-col>
+                  <ion-col size="8" >
+                    <ion-img style="width :140px ;height :140px" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/weather-forecast-station-1767330-1503594.png">
+                  </ion-img>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        <ion-card-title class="fontsize1"  >
+      <b> North</b><br> Weather Station
+        </ion-card-title>
+
+      </ion-card-header>
+      </ion-card>
+    </ion-col>
+
+    <ion-col size="2"(click)="southws()" >
+      <ion-card class="ion-card-design" color="">
+        <ion-card-header style="text-align: center;">
+          <ion-card-subtitle class="cardalign" >
+           Fiware PoC Entity
+            <ion-icon slot="icon-only" ios="alert-circle-outline" md="alert-circle-outline">
+            </ion-icon>  
+          </ion-card-subtitle>
+          <div class="div1">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="1">
+                  
+                  </ion-col>
+                  <ion-col size="8" >
+                    <ion-img style="width :140px ;height :140px" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/weather-forecast-station-1767330-1503594.png">
+                  </ion-img>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        <ion-card-title class="fontsize1"  >
+      <b> South</b><br> Weather Station
+        </ion-card-title>
+
+      </ion-card-header>
+      </ion-card>
+    </ion-col>
+
+
+
+    <ion-col size="2" (click)="westws()" >
+      <ion-card class="ion-card-design" color="">
+        <ion-card-header style="text-align: center;">
+          <ion-card-subtitle class="cardalign" >
+           Fiware PoC Entity
+            <ion-icon slot="icon-only" ios="alert-circle-outline" md="alert-circle-outline">
+            </ion-icon>  
+          </ion-card-subtitle>
+          <div class="div1">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="1">
+                  
+                  </ion-col>
+                  <ion-col size="8" >
+                    <ion-img style="width :140px ;height :140px" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/weather-forecast-station-1767330-1503594.png">
+                  </ion-img>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        <ion-card-title class="fontsize1"  >
+      <b> Centeral</b><br> Weather Station
+        </ion-card-title>
+
+      </ion-card-header>
+      </ion-card>
+    </ion-col>
+
+
+    <ion-col size="2" (click)="eastws()" >
+      <ion-card class="ion-card-design" color="">
+        <ion-card-header style="text-align: center;">
+          <ion-card-subtitle class="cardalign">
+           Fiware PoC Entity
+            <ion-icon slot="icon-only" ios="alert-circle-outline" md="alert-circle-outline">
+            </ion-icon>  
+          </ion-card-subtitle>
+          <div class="div1">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="1">
+                  
+                  </ion-col>
+                  <ion-col size="8" >
+                    <ion-img style="width :140px ;height :140px" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/weather-forecast-station-1767330-1503594.png">
+                  </ion-img>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        <ion-card-title class="fontsize1"  >
+      <b> East</b><br> Weather Station
+        </ion-card-title>
+
+      </ion-card-header>
+      </ion-card>
+    </ion-col>
+
+
+
+    <ion-col size="2" (click)="westws()" >
+      <ion-card class="ion-card-design" color="">
+        <ion-card-header style="text-align: center;">
+          <ion-card-subtitle class="cardalign" >
+           Fiware PoC Entity
+            <ion-icon slot="icon-only" ios="alert-circle-outline" md="alert-circle-outline">
+            </ion-icon>  
+          </ion-card-subtitle>
+          <div class="div1">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="1">
+                  
+                  </ion-col>
+                  <ion-col size="8" >
+                    <ion-img style="width :140px ;height :140px" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/weather-forecast-station-1767330-1503594.png">
+                  </ion-img>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        <ion-card-title class="fontsize1"  >
+      <b> West</b><br> Weather Station
+        </ion-card-title>
+
+      </ion-card-header>
+      </ion-card>
+    </ion-col>
+
+
+
+
+   
+
+</ion-row>
+</ion-grid>
+
+
+  </div>  
+  
 </ion-content>
+ 
