@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { Chart } from "chart.js";
 import {RestapiService} from '../restapi.service'
 
@@ -16,6 +16,8 @@ export class NorthWSPage implements OnInit {
  
   lineChart: any;
   airqualitychart:any;
+  alertcount:number= 0
+  alertarr:any=[];
 
 
    //--------------------timer Variables---------------
@@ -39,9 +41,9 @@ airgaugeValue ;
 airgaugeLabel = "ppm";
   //gaugeAppendText = " 'C";
   airthresholdConfig = {
-    '102': {color: 'green'},
-    '150': {color: 'orange'},
-    '300': {color: 'red'}
+    '100': {color: 'green'},
+    '350': {color: 'orange'},
+    '400': {color: 'red'}
 };
 
 
@@ -91,10 +93,17 @@ powerbackupLabel = "%";
  windspeeddata:any
  pressure:any
 
-  constructor(private api :RestapiService,public loadingController: LoadingController,public alertController: AlertController) {
+  
+
+  constructor(private api :RestapiService,public loadingController: LoadingController,
+    public alertController: AlertController,
+    public modalController: ModalController 
+    ) {
 //this.lineChartMethod()
 this.Initization()
 //this.Initization1()
+
+
 this.initTimer();
       this. startTimer();
 this.fix()
@@ -107,12 +116,25 @@ this.fix()
   }
 
   async alertmsg() {
+    let itemsList = ``;
+    this.alertarr.map((item)=>{
+      itemsList += `<li>${item}</li>`
+   })
+   
+   let message = `<ul>${itemsList }</ul>`;
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Alert',
     // subHeader: 'Subtitle',
-      message: '<b>NO ACTIVE ALERTS<b>',
-      buttons: ['OK']
+      message: message,
+      buttons: [{
+        text: 'OK',
+        role: 'cancel',
+        handler: () => {
+          this.alertarr=[]
+          this.alertcount = this.alertarr.length;
+        }
+      }]
     });
 
     await alert.present();
@@ -135,7 +157,7 @@ this.fix()
     this.entities=[]
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
-      message: 'Fetching Entities....'
+      message: 'Fetching Data....'
     });
   // await loading.present()
     await this.api.getNorthWeatherStationfromnodeserver()
@@ -156,6 +178,11 @@ this.fix()
            this.pressure =res.Pressure.value;
            this.powerbackupValue =res.Power.value;
           // console.log("Windspeed : ",this.windspeeddata)
+          if ( this.watertankValue >= 30){
+            this.alertarr.push("Temp : "+this.watertankValue+ " at : "+(res.Temperature.metadata.TimeInstant.value).slice(11, 19))
+            this.alertcount = this.alertarr.length;    
+            console.log(this.alertarr )      
+          }
           if((res["Air Quality"].metadata.TimeInstant.value).slice(11, 19)!=aircheckpoint)
           {
             this.airqdata.push(this.airgaugeValue)
@@ -187,7 +214,7 @@ this.fix()
     this.entities=[]
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
-      message: 'Fetching Entities....'
+      message: 'Fetching Data....'
     });
    await loading.present()
     await this.api.getNorthWeatherStationfromnodeserver()
@@ -209,6 +236,11 @@ this.fix()
            this.temptime.push((res.Temperature.metadata.TimeInstant.value).slice(11, 19))
            this.airqdata.push(this.airgaugeValue)
            this.airqtime.push((res["Air Quality"].metadata.TimeInstant.value).slice(11, 19))
+           if ( this.watertankValue >= 30){
+            this.alertarr.push("Alert")
+            this.alertcount = this.alertarr.length;          
+            console.log(this.alertarr )  
+          }
           if(this.tempdata.length == 6)
           {
             this.tempdata.splice(0, 1)

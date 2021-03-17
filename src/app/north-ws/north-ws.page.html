@@ -6,20 +6,28 @@
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
     <ion-title>{{title}}</ion-title>
-    <ion-buttons slot="end">
-      <ion-button class="iconsize" (click)="alertmsg()">
-        <ion-icon slot="icon-only" ios="notifications-outline" md="notifications-outline"></ion-icon>
-      </ion-button>
+    <ion-buttons  slot="end">
+      <ion-button (click)="alertmsg()">
+        <ion-icon slot="icon-only"
+                  name="notifications">
+        </ion-icon>
+        <ion-badge *ngIf='alertcount >0' color="primary">{{alertcount}}</ion-badge>
+      </ion-button> 
+
       <ion-button >
-        <ion-icon class="iconsize" slot="icon-only" ios="person-circle-outline" md="person-circle-outline"></ion-icon>
+        <ion-icon  slot="icon-only" ios="person-circle-outline" md="person-circle-outline"></ion-icon>
       </ion-button>
+      
+   
+     
+    
     </ion-buttons>
+    
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="background">
-
-
+ 
 <ion-grid>
   <ion-row>
 
@@ -197,6 +205,13 @@ miles/hr
 </ion-row>
 </ion-grid>
 
+<!--
+<ion-list *ngFor="let i of alertarr" >
+  <ion-item >
+    <ion-label>{{i}}</ion-label>
+  </ion-item>
+</ion-list>
+-->
 
 <div >
   <ion-grid>

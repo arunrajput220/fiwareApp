@@ -1,9 +1,22 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>southWS</ion-title>
+
+<ion-header >
+  <ion-toolbar class="myback">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+   <!-- <ion-title>{{title}}</ion-title>-->
+   <ion-title>South Weather Station</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="iconsize" (click)="alertmsg()">
+        <ion-icon slot="icon-only" ios="notifications-outline" md="notifications-outline"></ion-icon>
+      </ion-button>
+      <ion-button >
+        <ion-icon class="iconsize" slot="icon-only" ios="person-circle-outline" md="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="background">
 
 </ion-content>
