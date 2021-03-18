@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AlertController, LoadingController, ModalController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { Chart } from "chart.js";
 import {RestapiService} from '../restapi.service'
 
@@ -97,7 +97,8 @@ powerbackupLabel = "%";
 
   constructor(private api :RestapiService,public loadingController: LoadingController,
     public alertController: AlertController,
-    public modalController: ModalController 
+    public modalController: ModalController ,
+    public toastController: ToastController
     ) {
 //this.lineChartMethod()
 this.Initization()
@@ -113,6 +114,17 @@ this.fix()
     
    
   
+  }
+
+ 
+
+
+  async presentPopover() {
+    const toast = await this.toastController.create({
+      message: 'This Feature is under Development',
+      duration: 2000
+    });
+    toast.present();
   }
 
   async alertmsg() {
@@ -179,9 +191,11 @@ this.fix()
            this.powerbackupValue =res.Power.value;
           // console.log("Windspeed : ",this.windspeeddata)
           if ( this.watertankValue >= 30){
+            if (this.alertarr[this.alertarr.length -1]!="Temp : "+this.watertankValue+ " at : "+(res.Temperature.metadata.TimeInstant.value).slice(11, 19)){
             this.alertarr.push("Temp : "+this.watertankValue+ " at : "+(res.Temperature.metadata.TimeInstant.value).slice(11, 19))
             this.alertcount = this.alertarr.length;    
-            console.log(this.alertarr )      
+            console.log(this.alertarr ) 
+            }     
           }
           if((res["Air Quality"].metadata.TimeInstant.value).slice(11, 19)!=aircheckpoint)
           {
@@ -237,8 +251,8 @@ this.fix()
            this.airqdata.push(this.airgaugeValue)
            this.airqtime.push((res["Air Quality"].metadata.TimeInstant.value).slice(11, 19))
            if ( this.watertankValue >= 30){
-            this.alertarr.push("Alert")
-            this.alertcount = this.alertarr.length;          
+            this.alertarr.push("Temp : "+this.watertankValue+ " at : "+(res.Temperature.metadata.TimeInstant.value).slice(11, 19))
+            this.alertcount = this.alertarr.length;              
             console.log(this.alertarr )  
           }
           if(this.tempdata.length == 6)
@@ -266,6 +280,18 @@ this.fix()
     
   }
 
+
+  async userDetails() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+    //  header: 'Alert',
+     subHeader: 'User Details',
+      message: '<b>Name : </b>Arun Rajput <br><b>Email : </b>arunrajput@gmail.com',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
   async Initization1(){
     this.entities=[]
     const loading = await this.loadingController.create({

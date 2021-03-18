@@ -6,7 +6,7 @@
       <ion-back-button defaultHref="home"></ion-back-button>
     </ion-buttons>
     <ion-title>{{title}}</ion-title>
-    <ion-buttons  slot="end">
+    <ion-buttons class="graph" slot="end">
       <ion-button (click)="alertmsg()">
         <ion-icon slot="icon-only"
                   name="notifications">
@@ -14,8 +14,8 @@
         <ion-badge *ngIf='alertcount >0' color="primary">{{alertcount}}</ion-badge>
       </ion-button> 
 
-      <ion-button >
-        <ion-icon  slot="icon-only" ios="person-circle-outline" md="person-circle-outline"></ion-icon>
+      <ion-button (click)="userDetails()" >
+        <ion-icon  slot="icon-only" ios="person-outline" md="person-outline"></ion-icon>
       </ion-button>
       
    
@@ -219,9 +219,14 @@ miles/hr
  
    <ion-col size="6">
   <ion-card>
-    <ion-card-header>
+    <ion-item class="graph">
       Temperature Data Graph
-    </ion-card-header>
+      <ion-buttons slot="end">
+          <ion-button (click)="presentPopover()">
+            <ion-icon slot="icon-only" ios="alert-circle-outline" md="alert-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
     <ion-card-content>
      <canvas #lineCanvas style="position: relative; height:10vh; width:10vw"></canvas>
     </ion-card-content>
@@ -230,9 +235,15 @@ miles/hr
 
 <ion-col size="6">
   <ion-card>
-    <ion-card-header>
+    <ion-item class="graph">
       Air Quality Data Graph
-    </ion-card-header>
+      <ion-buttons slot="end">
+          <ion-button (click)="presentPopover()">
+            <ion-icon slot="icon-only" ios="alert-circle-outline" md="alert-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+   
     <ion-card-content>
          <canvas #airqualitygraph style="position: relative; height:10vh; width:10vw"></canvas> 
     </ion-card-content>
