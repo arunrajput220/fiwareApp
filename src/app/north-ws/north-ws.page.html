@@ -8,8 +8,7 @@
     <ion-title>{{title}}</ion-title>
     <ion-buttons class="graph" slot="end">
       <ion-button (click)="alertmsg()">
-        <ion-icon slot="icon-only"
-                  name="notifications">
+        <ion-icon slot="icon-only"name="notifications">
         </ion-icon>
         <ion-badge *ngIf='alertcount >0' color="primary">{{alertcount}}</ion-badge>
       </ion-button> 
@@ -248,6 +247,46 @@ miles/hr
          <canvas #airqualitygraph style="position: relative; height:10vh; width:10vw"></canvas> 
     </ion-card-content>
   </ion-card>
+</ion-col> 
+
+
+</ion-row>
+
+
+
+<ion-row>
+ 
+  <ion-col size="6">
+ <ion-card>
+   <ion-item class="graph">
+     Windspeed Data Graph
+     <ion-buttons slot="end">
+         <ion-button (click)="presentPopover()">
+           <ion-icon slot="icon-only" ios="alert-circle-outline" md="alert-circle-outline"></ion-icon>
+         </ion-button>
+       </ion-buttons>
+     </ion-item>
+   <ion-card-content>
+    <canvas #windspeedgraph style="position: relative; height:10vh; width:10vw"></canvas>
+   </ion-card-content>
+ </ion-card>
+</ion-col> 
+
+<ion-col size="6">
+ <ion-card>
+   <ion-item class="graph">
+     Humidity Data Graph
+     <ion-buttons slot="end">
+         <ion-button (click)="presentPopover()">
+           <ion-icon slot="icon-only" ios="alert-circle-outline" md="alert-circle-outline"></ion-icon>
+         </ion-button>
+       </ion-buttons>
+     </ion-item>
+  
+   <ion-card-content>
+        <canvas #humiditygraph style="position: relative; height:10vh; width:10vw"></canvas> 
+   </ion-card-content>
+ </ion-card>
 </ion-col> 
 
 

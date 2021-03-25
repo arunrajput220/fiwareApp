@@ -71,7 +71,7 @@
     }
   
     .background{
-     --background: #fff url("../../assets/images/12.jpg") no-repeat center center;
+     --background: #fff url("../../assets/images/223.jpg") no-repeat center center;
     // --background:#c7d4ca;
      }
   
@@ -104,11 +104,14 @@
     .ion-card-design-back {
         border-radius: 20px;
       //  --background:  #353838;
-      --background: #fff url("../../assets/images/112.jpg") no-repeat center center;
+      --background: #fff url("../../assets/images/223.jpg") no-repeat center center;
         font-weight: bold;
         text-align: center;
        // color:white ;
         }
+        .ion-card-design {
+          border-radius: 20px;
+          }
 
 
 .chart{

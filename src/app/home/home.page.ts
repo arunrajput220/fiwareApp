@@ -119,7 +119,7 @@ async sendentityName(name){
     const loading = await this.loadingController.create({
       cssClass: 'my-custom-class',
       message: 'Loading.....',
-      duration: 2000
+      duration: 1000
     });
     await loading.present();
 

@@ -10,6 +10,9 @@ const httpOptionsStateWeatherDepartment = {
   headers: new HttpHeaders({'Content-Type': 'application/json','fiware-service': 'WeatherDepartment','fiware-servicepath': '/'})
 };
 
+const httpOptionsfirebase = {
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
+};
 
 @Injectable({
   providedIn: 'root'
@@ -40,6 +43,72 @@ check:any;
   }
 
   getNorthWeatherStationfromnodeserver(): Observable<any> {
-    return this.http.get("http://localhost:3000/fiware/northweatherstation", httpOptions)
+    return this.http.get("http://localhost:1337/localhost:3000/fiware/northweatherstation", httpOptions)
   }
+
+
+  getSouthWeatherStationfromnodeserver(): Observable<any> {
+    return this.http.get("http://localhost:3000/fiware/southweatherstation", httpOptions)
+  }
+
+
+
+
+  
+getGkitchenFanStatus(): Observable<any> {
+  return this.http.get("https://iotapp-aad4a.firebaseio.com/gkitchen/Fan.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", httpOptionsfirebase)
 }
+setGkitchenFanStatus(payload): Observable<any> {
+  return this.http.put("https://iotapp-aad4a.firebaseio.com/gkitchen/Fan.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", payload,httpOptionsfirebase)
+}
+
+
+getGkitchenJuicerStatus(): Observable<any> {
+  return this.http.get("https://iotapp-aad4a.firebaseio.com/gkitchen/Juicer.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", httpOptionsfirebase)
+}
+setGkitchenJuicerStatus(payload): Observable<any> {
+  return this.http.put("https://iotapp-aad4a.firebaseio.com/gkitchen/Juicer.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", payload,httpOptionsfirebase)
+}
+
+getGkitchenLightsStatus(): Observable<any> {
+  return this.http.get("https://iotapp-aad4a.firebaseio.com/gkitchen/Lights.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", httpOptionsfirebase)
+}
+setGkitchenLightsStatus(payload): Observable<any> {
+  return this.http.put("https://iotapp-aad4a.firebaseio.com/gkitchen/Lights.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", payload,httpOptionsfirebase)
+}
+
+getGkitchenMicrowaveOvenStatus(): Observable<any> {
+  return this.http.get("https://iotapp-aad4a.firebaseio.com/gkitchen/MicrowaveOven.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", httpOptionsfirebase)
+}
+setGkitchenMicrowaveOvenStatus(payload): Observable<any> {
+  return this.http.put("https://iotapp-aad4a.firebaseio.com/gkitchen/MicrowaveOven.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", payload,httpOptionsfirebase)
+}
+
+getGkitchenRefrigratorStatus(): Observable<any> {
+  return this.http.get("https://iotapp-aad4a.firebaseio.com/gkitchen/Refrigrator.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", httpOptionsfirebase)
+}
+setGkitchenRefrigratorStatus(payload): Observable<any> {
+  return this.http.put("https://iotapp-aad4a.firebaseio.com/gkitchen/Refrigrator.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", payload,httpOptionsfirebase)
+}
+
+getGkitchenSpeakerStatus(): Observable<any> {
+  return this.http.get("https://iotapp-aad4a.firebaseio.com/gkitchen/Speaker.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", httpOptionsfirebase)
+}
+setGkitchenSpeakerStatus(payload): Observable<any> {
+  return this.http.put("https://iotapp-aad4a.firebaseio.com/gkitchen/Speaker.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", payload,httpOptionsfirebase)
+}
+
+getGkitchenToasterStatus(): Observable<any> {
+  return this.http.get("https://iotapp-aad4a.firebaseio.com/gkitchen/Toaster.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", httpOptionsfirebase)
+}
+setGkitchenToasterStatus(payload): Observable<any> {
+  return this.http.put("https://iotapp-aad4a.firebaseio.com/gkitchen/Toaster.json?auth=o94DBUv8yCSRRI2NNYv4bHIQmvmheQBTnoOkhhjt", payload,httpOptionsfirebase)
+}
+
+
+}
+
+
+
+
+

@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { SouthWSPageRoutingModule } from './south-ws-routing.module';
-
+import { NgxGaugeModule } from 'ngx-gauge';
 import { SouthWSPage } from './south-ws.page';
 
 @NgModule({
@@ -13,7 +13,8 @@ import { SouthWSPage } from './south-ws.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    SouthWSPageRoutingModule
+    SouthWSPageRoutingModule,
+    NgxGaugeModule
   ],
   declarations: [SouthWSPage]
 })
