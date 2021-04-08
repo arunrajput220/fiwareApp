@@ -232,7 +232,7 @@ this.fix()
       message: 'Fetching Data....'
     });
    await loading.present()
-    await this.api.getSouthWeatherStationfromnodeserver()
+    await this.api.getNorthWeatherStation()
           .subscribe(res => { 
             console.log(res)
             let check = res.id

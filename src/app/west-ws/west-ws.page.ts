@@ -18,13 +18,16 @@ export class WestWSPage implements OnInit {
   @ViewChild('windspeedgraph') private windspeedgraph: ElementRef;
 
  
+  segment=0
+
+
   lineChart: any;
   airqualitychart:any;
   windspeedchart:any;
   humiditychart : any;
   alertcount:number= 0
   alertarr:any=[];
-  segment=0;
+
 
    //--------------------timer Variables---------------
    time:any;
@@ -59,7 +62,7 @@ watertankmin=0;
 watertankmax=100;
 watertanksize=140;
 watertankthick=10;
-watertankValue =78;
+watertankValue ;
  
 watertankLabel = "Celcius";
   //gaugeAppendText = " 'C";
@@ -126,13 +129,6 @@ this.fix()
     
    
   
-  }
-
-  async segmentChanged(ev: any) {  
-    await this.slider.slideTo(this.segment);  
-  }  
-  async slideChanged() {  
-    this.segment = await this.slider.getActiveIndex();  
   }
 
  

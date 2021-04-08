@@ -43,8 +43,28 @@ check:any;
   }
 
   getNorthWeatherStationfromnodeserver(): Observable<any> {
-    return this.http.get("http://localhost:1337/localhost:3000/fiware/northweatherstation", httpOptions)
+    return this.http.get("http://20.197.62.1:3000/fiware/northweatherstation", httpOptions)
   }
+
+  getNorthWeatherStationfromnodeserverofcunus(): Observable<any> {
+    return this.http.get("http://20.197.62.1:3000/fiware/cynus", httpOptions)
+  }
+
+  getTemperatureNorthWeatherStationCgynusHistoricdatafromnodeserver(): Observable<any> {
+    return this.http.get("http://20.197.62.1:3000/fiware/cynus/temperature", httpOptions)
+  }
+  getHumidityNorthWeatherStationCgynusHistoricdatafromnodeserver(): Observable<any> {
+    return this.http.get("http://20.197.62.1:3000/fiware/cynus/humidity", httpOptions)
+  }
+
+  getAirQualityNorthWeatherStationCgynusHistoricdatafromnodeserver(): Observable<any> {
+    return this.http.get("http://20.197.62.1:3000/fiware/cynus/airquality", httpOptions)
+  }
+
+  getWindSpeedNorthWeatherStationCgynusHistoricdatafromnodeserver(): Observable<any> {
+    return this.http.get("http://localhost:3000/fiware/cynus/windspeed", httpOptions)
+  }
+
 
 
   getSouthWeatherStationfromnodeserver(): Observable<any> {

@@ -26,6 +26,8 @@
 </ion-header>
 
 <ion-content class="background">
+
+  <ion-item>Real Time Data</ion-item>
  
 <ion-grid>
   <ion-row>
@@ -211,7 +213,7 @@ miles/hr
   </ion-item>
 </ion-list>
 -->
-
+<ion-item>Historic Data</ion-item>
 <div >
   <ion-grid>
   <ion-row>
@@ -261,8 +263,8 @@ miles/hr
    <ion-item class="graph">
      Windspeed Data Graph
      <ion-buttons slot="end">
-         <ion-button (click)="presentPopover()">
-           <ion-icon slot="icon-only" ios="alert-circle-outline" md="alert-circle-outline"></ion-icon>
+         <ion-button (click)="Initizationonce()">
+           <ion-icon slot="icon-only" ios="refresh" md="refresh"></ion-icon>
          </ion-button>
        </ion-buttons>
      </ion-item>
